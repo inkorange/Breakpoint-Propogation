@@ -1,8 +1,6 @@
 
 import BreakpointPropogation from './breakpoint-propogation.js';
 
-console.log('I have a heartbeat.');
-
 BreakpointPropogation({
     breakpoints: [
         {1000:  'large'},
