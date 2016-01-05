@@ -21,12 +21,12 @@ BreakpointPropogation({
 BreakpointPropogation accepts the following params:
 
 *breakpoints*: Array - collection of object literals that define the max-width of the breakpoint as the key and the value is the breakpoint name.
+
 *interval*: Integer - Using a debouncer, this is the throttled value in ms when when to fire the window resize callback.
+
 *appendDOM*: Boolean - If set to true, this will append a `data-breakpoint` attribute to the `<html>` object that represents the current breakpoint. Note that this could slow down performance.
 
----
-
-h2.Broadcasting
+## Broadcasting
 
 When the breakpoint value does change based on a resize event, it is broadcasted to the window object. With jQuery, it can be listened to through the `breakpoint-change` event.
 
@@ -38,7 +38,7 @@ $(window).on('breakpoint-change', function(e,payload) {
 
 The payload param returns the breakpoint value. This will only fire when the value changes, not on every (throttled) resize event.
 
-h2.Targeting
+## Targeting
 
 On every resize, the window width and breakpoint name is bound to the window object. 
  
