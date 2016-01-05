@@ -24,5 +24,37 @@ BreakpointPropogation accepts the following params:
 *interval*: Integer - Using a debouncer, this is the throttled value in ms when when to fire the window resize callback.
 *appendDOM*: Boolean - If set to true, this will append a `data-breakpoint` attribute to the `<html>` object that represents the current breakpoint. Note that this could slow down performance.
 
+---
 
+h2.Broadcasting
 
+When the breakpoint value does change based on a resize event, it is broadcasted to the window object. With jQuery, it can be listened to through the `breakpoint-change` event.
+
+```javascript
+$(window).on('breakpoint-change', function(e,payload) {
+    alert('There has been a breakpoint-change: ' +  payload);
+});
+```
+
+The payload param returns the breakpoint value. This will only fire when the value changes, not on every (throttled) resize event.
+
+h2.Targeting
+
+On every resize, the window width and breakpoint name is bound to the window object. 
+ 
+```javascript
+window.breakpoint = {
+    width: width,
+    name: name
+};
+```
+
+Within the JS, you can target module rendering based on inspecting this object. If appendDOM is set to be true, you can target the breakpoint name in your cSS with the attribute selector:
+
+```css
+html[data-breakpoint="small"] .module {
+    display: none;
+}
+```
+
+TODO: Remove jQuery dependencies, Look to integrate container query logic, optimize codebase.
