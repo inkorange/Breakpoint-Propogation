@@ -41,7 +41,9 @@ export default function (config) {
 
     var _init = function () {
         $.extend(_params, config);
-        _handleCommunication($window.width());
+        $( document ).ready(() => {
+            _handleCommunication($window.width());
+        });
         _bind();
     };
 
