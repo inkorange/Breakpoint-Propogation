@@ -11,6 +11,6 @@ BreakpointPropogation({
     appendDOM: true
 });
 
-$(window).on('breakpoint-change', function(e,payload) {
-    alert('There has been a breakpoint-change: ' +  payload);
+document.addEventListener('breakpoint-change', function(e) {
+    alert('There has been a breakpoint-change: ' + e.detail);
 });
